@@ -75,4 +75,13 @@ function save(id){
     window.location.href="php/php.php?a=u&id="+id_usu.value+"&nome="+inputs_nome.value+"&fone="+fone.value;
   }
 }
+function formatar_fone(id){
+  let fone=document.getElementById(id);
+  if(fone.value.length == 2){
+    fone.value=fone.value+" ";
+  }
+  if(fone.value.length == 7){
+    fone.value=fone.value+"-";
+  }
+}
 crud();

@@ -1,0 +1,119 @@
+body{
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(54, 54, 54);
+  background-color: #EEEE;
+}
+div.conteudo{
+  align-items: center;
+}
+.conteudo div{
+  width: 50%;
+  margin-left: 25%;
+}
+.conteudo .cabecalho{
+  height: 150px;
+}
+.conteudo .crud h1{
+  font-size: 25px;
+}
+.conteudo button{
+  padding: 10px;
+  background-color: cornflowerblue;
+  margin: 5px;
+  border: 0;
+  color: white;
+  font-weight: bold;
+  transition: background 100ms linear;
+  cursor: pointer;
+}
+.conteudo button:hover{
+  background-color: rgb(50, 112, 228);
+}
+.conteudo .view{
+  height: 500px;
+  border: 1px solid grey;
+  background-color: white;
+  height: fit-content;
+}
+.conteudo .view h1{
+  margin-left: 10%;
+}
+.conteudo .view form input{
+  padding: 10px;
+  outline: none;
+  transition: border 100ms linear;
+  width: 94%;
+}
+.conteudo .view form input:focus{
+  border: 2px solid cornflowerblue;
+}
+.conteudo .view form{
+  width: 50%;
+  margin-left: 25%;
+  margin-top: 10%;
+  margin-bottom: 10%;
+}
+section{
+ display: flex;
+ justify-content: space-around;
+ align-items: center;
+}
+.formulario{
+  margin: 20px !important;
+  width: 40% !important;
+}
+.display{
+  display: none;
+}
+.conteudo .view form button{
+  width: 100%;
+  margin: 0;
+  margin-top: 10%;
+  background-color: #3a3a8d;
+}
+.conteudo .view form button:hover{
+  background-color: rgb(31, 31, 87);
+}
+.conteudo .view div.table_read{
+  margin-left: 10%;
+  width: 80%;
+}
+table{
+  border-collapse: collapse;
+}
+.conteudo .view div.table_read table th,tr,td{
+  width: 500px;
+  text-align: left;
+  padding: 5px;
+}
+.conteudo .view div.table_read table th{
+  border-bottom: 1px solid grey;
+}
+button.delete{
+  background-color: rgb(238, 76, 76);
+  transition: background 100ms linear;
+}
+button.delete:hover{
+  background-color: rgb(134, 13, 13);
+}
+.absolute{
+  position: absolute;
+  z-index: 2;
+  top: 290px;
+  left: 0px;
+  display: none;
+}
+.display_flex{
+  display:  flex;
+  justify-content: space-between;
+  align-items: center;
+}
+table#table_modi input{
+  width: 80px;
+  border: 0;
+  font-size: 16px;
+  outline: none;
+}
+.read{
+  pointer-events: none;
+}

@@ -31,24 +31,26 @@
           <input type="text" name="nome" id="nome" placeholder="Digite seu nome aqui" autocomplete="off">
           <br><br>
           <label for="nome">Digite seu Telefone: </label>
-          <input type="text" name="telefone" id="telefone" placeholder="Digite seu telefone aqui" autocomplete="off">
+          <input type="text" name="telefone" id="telefone" placeholder="Digite seu telefone aqui" autocomplete="off" maxlength="12" onkeyup="formatar_fone('telefone')">
           <button class="cadastrar">Cadastrar</button>
         </form>
       </section>
       <div class="table_read display" id='read'>
-        <table>
-          <tr>
-            <th>Id</th>
-            <th>Nome</th>
-            <th>Telefone</th>
-            <th>Data do cadastro</th>
-            <th>Hora do cadastro</th>
-            <th>Descrição</th>
-          </tr>
           <?php
           $sql="select * from TbUsuarios";
           $consulta=mysqli_query($conexao,$sql);
-          if($consulta){
+          if($row=mysqli_num_rows($consulta) > 0){
+            echo"
+            <table>
+              <tr>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>Telefone</th>
+                <th>Data do cadastro</th>
+                <th>Hora do cadastro</th>
+                <th>Descrição</th>
+              </tr>
+            ";
             while($arr=$consulta->fetch_array()){
               $id=$arr['id'];
               $nome=$arr['nome'];
@@ -67,26 +69,29 @@
               </tr>
               ";
             }
+            echo"</table>";
+          }else{
+            echo"<h1>Sem registros</h1>";
           }
           ?>
-        </table>
       </div>
       <br>
       <div class="table_read display" id='modi'>
-        <table id='table_modi'>
-          <tr>
-            <th>Id</th>
-            <th>Nome</th>
-            <th>Telefone</th>
-            <th>Data do cadastro</th>
-            <th>Hora do cadastro</th>
-            <th>Descrição</th>
-          </tr>
-          <tr>
           <?php
             $sql="select * from TbUsuarios";
             $consulta=mysqli_query($conexao,$sql);
-            if($consulta){
+            if($row=mysqli_num_rows($consulta) > 0){
+              echo"
+              <table id='table_modi'>
+              <tr>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>Telefone</th>
+                <th>Data do cadastro</th>
+                <th>Hora do cadastro</th>
+                <th>Descrição</th>
+              </tr>
+              ";
               while($arr=$consulta->fetch_array()){
                 $id=$arr['id'];
                 $nome=$arr['nome'];
@@ -98,7 +103,7 @@
                 <tr>
                   <td><input type='text' name='id' id='id_$id' autocomplete='off' value='$id' class='read'></td>
                   <td><input type='text' name='nome_modi' id='nome_modi_$id' autocomplete='off' value='$nome'  class='read'></td>
-                  <td><input type='text' name='fone_modi' id='fone_modi_$id' autocomplete='off' value='$fone'  class='read'></td>
+                  <td><input type='text' name='fone_modi' id='fone_modi_$id' autocomplete='off' value='$fone'  class='read' maxlength='12' onkeyup='formatar_fone(`fone_modi_$id`)'></td>
                   <td>$date</td>
                   <td>$hora</td>
                   <td>$txt</td>
@@ -107,27 +112,30 @@
                 </tr>
                 ";
               }
+              echo"</table>";
+            }else{
+              echo"<h1>Sem registros</h1>";
             }
             ?>
-          </tr>
-        </table>
       </div>
       <br>
       <div class="table_read display" id='delete'>
-        <table>
-          <tr>
-            <th>Id</th>
-            <th>Nome</th>
-            <th>Telefone</th>
-            <th>Data do cadastro</th>
-            <th>Hora do cadastro</th>
-            <th>Descrição</th>
-          </tr>
-          <tr>
           <?php
             $sql="select * from TbUsuarios";
             $consulta=mysqli_query($conexao,$sql);
-            if($consulta){
+            if($row=mysqli_num_rows($consulta) > 0){
+              echo"
+              <table>
+              <tr>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>Telefone</th>
+                <th>Data do cadastro</th>
+                <th>Hora do cadastro</th>
+                <th>Descrição</th>
+              </tr>
+              <tr>
+              ";
               while($arr=$consulta->fetch_array()){
                 $id=$arr['id'];
                 $nome=$arr['nome'];
@@ -147,10 +155,14 @@
                 </tr>
                 ";
               }
+              echo"
+              </tr>
+              </table>
+              ";
+            }else{
+              echo"<h1>Sem registros</h1>";
             }
             ?>
-          </tr>
-        </table>
       </div>
       <br>
     </div>

@@ -3,5 +3,11 @@
   $usuario = 'root';
   $senha = '';
   $BD = 'dbusuarios';
-  $conexao = mysqli_connect($host,$usuario,$senha,$BD);
+  try {
+    $pdo=new PDO("mysql:dbname=$BD;host=$host","$usuario","$senha");
+  } catch (PDPException $e) {
+    echo "Erro com o banco de dados: ".$e->getMessage();
+  } catch(Exception $e){
+    echo "Erro generico: ".$e->getMessage();
+  } 
 ?>

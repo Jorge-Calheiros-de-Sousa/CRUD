@@ -30,24 +30,8 @@ SET time_zone = "+00:00";
 CREATE TABLE `tbusuarios` (
   `id` int(11) NOT NULL,
   `nome` varchar(75) DEFAULT NULL,
-  `telefone` varchar(14) DEFAULT NULL,
-  `dataMeeting` date DEFAULT NULL,
-  `horaMeeting` time DEFAULT NULL,
-  `descricaoMeeting` text DEFAULT NULL
+  `telefone` varchar(14) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Extraindo dados da tabela `tbusuarios`
---
-
-INSERT INTO `tbusuarios` (`id`, `nome`, `telefone`, `dataMeeting`, `horaMeeting`, `descricaoMeeting`) VALUES
-(1, 'Jorge', '4002-2922', '2021-06-22', '19:57:18', 'usuario'),
-(3, 'Arthur', '7894-5632', '2021-06-23', '10:09:39', 'usuario'),
-(4, 'TUCa', '1234-5698', '2021-06-23', '15:47:02', 'usuario');
-
---
--- Índices para tabelas despejadas
---
 
 --
 -- Índices para tabela `tbusuarios`

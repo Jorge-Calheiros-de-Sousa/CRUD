@@ -9,13 +9,13 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Atividade de PW</title>
+  <title>CRUD</title>
   <link rel="stylesheet" href="css.css">
 </head>
 <body>
   <div class="conteudo">
     <div class="cabecalho">
-      <h1>Nome: Jorge Calheiros de Sousa <u> 3DS</u></h1>
+      <h1>Nome: Jorge Calheiros de Sousa</h1>
     </div>
     <div class="crud">
       <h1>Sistema de CRUD</h1>
@@ -37,35 +37,26 @@
       </section>
       <div class="table_read display" id='read'>
           <?php
-          $sql="select * from TbUsuarios";
-          $consulta=mysqli_query($conexao,$sql);
-          if($row=mysqli_num_rows($consulta) > 0){
+          $sql=$pdo->prepare("select * from TbUsuarios");
+          $sql->execute();
+          if($sql->rowCount() > 0){
             echo"
             <table>
               <tr>
                 <th>Id</th>
                 <th>Nome</th>
                 <th>Telefone</th>
-                <th>Data do cadastro</th>
-                <th>Hora do cadastro</th>
-                <th>Descrição</th>
               </tr>
             ";
-            while($arr=$consulta->fetch_array()){
+            while($arr=$sql->fetch(PDO::FETCH_ASSOC)){
               $id=$arr['id'];
               $nome=$arr['nome'];
               $fone=$arr['telefone'];
-              $date=$arr['dataMeeting'];
-              $hora=$arr['horaMeeting'];
-              $txt=$arr['descricaoMeeting'];
               echo"
               <tr>
                 <td>$id</td>
                 <td>$nome</td>
                 <td>$fone</td>
-                <td>$date</td>
-                <td>$hora</td>
-                <td>$txt</td>
               </tr>
               ";
             }
@@ -78,35 +69,26 @@
       <br>
       <div class="table_read display" id='modi'>
           <?php
-            $sql="select * from TbUsuarios";
-            $consulta=mysqli_query($conexao,$sql);
-            if($row=mysqli_num_rows($consulta) > 0){
+             $sql=$pdo->prepare("select * from TbUsuarios");
+             $sql->execute();
+            if($sql->rowCount() > 0){
               echo"
               <table id='table_modi'>
               <tr>
                 <th>Id</th>
                 <th>Nome</th>
                 <th>Telefone</th>
-                <th>Data do cadastro</th>
-                <th>Hora do cadastro</th>
-                <th>Descrição</th>
               </tr>
               ";
-              while($arr=$consulta->fetch_array()){
+              while($arr=$sql->fetch(PDO::FETCH_ASSOC)){
                 $id=$arr['id'];
                 $nome=$arr['nome'];
                 $fone=$arr['telefone'];
-                $date=$arr['dataMeeting'];
-                $hora=$arr['horaMeeting'];
-                $txt=$arr['descricaoMeeting'];
                 echo"
                 <tr>
                   <td><input type='text' name='id' id='id_$id' autocomplete='off' value='$id' class='read'></td>
                   <td><input type='text' name='nome_modi' id='nome_modi_$id' autocomplete='off' value='$nome'  class='read'></td>
                   <td><input type='text' name='fone_modi' id='fone_modi_$id' autocomplete='off' value='$fone'  class='read' maxlength='12' onkeyup='formatar_fone(`fone_modi_$id`)'></td>
-                  <td>$date</td>
-                  <td>$hora</td>
-                  <td>$txt</td>
                   <td><button type='button' onclick='redirecionar_modi(`$id`)'>Modificar</button></td>
                   <td><button type='button' id='$id' onclick='save($id)' class='display'>Salvar</button></td>
                 </tr>
@@ -121,36 +103,27 @@
       <br>
       <div class="table_read display" id='delete'>
           <?php
-            $sql="select * from TbUsuarios";
-            $consulta=mysqli_query($conexao,$sql);
-            if($row=mysqli_num_rows($consulta) > 0){
+             $sql=$pdo->prepare("select * from TbUsuarios");
+             $sql->execute();
+            if($sql->rowCount() > 0){
               echo"
               <table>
               <tr>
                 <th>Id</th>
                 <th>Nome</th>
                 <th>Telefone</th>
-                <th>Data do cadastro</th>
-                <th>Hora do cadastro</th>
-                <th>Descrição</th>
               </tr>
               <tr>
               ";
-              while($arr=$consulta->fetch_array()){
+              while($arr=$sql->fetch(PDO::FETCH_ASSOC)){
                 $id=$arr['id'];
                 $nome=$arr['nome'];
                 $fone=$arr['telefone'];
-                $date=$arr['dataMeeting'];
-                $hora=$arr['horaMeeting'];
-                $txt=$arr['descricaoMeeting'];
                 echo"
                 <tr>
                   <td>$id</td>
                   <td>$nome</td>
                   <td>$fone</td>
-                  <td>$date</td>
-                  <td>$hora</td>
-                  <td>$txt</td>
                   <td><button class='delete' onclick='redirecionar_delete(`$id`)'>Deletar</button></td>
                 </tr>
                 ";

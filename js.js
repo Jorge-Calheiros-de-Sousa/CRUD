@@ -1,87 +1,147 @@
-function crud (){
-  function createListeners(){
-    let h1=document.getElementById('h1');
-    document.getElementById('c').addEventListener('click',function(){
-      h1.innerHTML="Criar";
-      forms(h1);
+function validar(type,id){
+  let nome = document.getElementById('name');
+  let idade = document.getElementById('year');
+  if(type=="c" && id== 0){
+    if(nome.value == "" || nome.value.length < 2){
+      alert("Preencha o campo de nome corretamente");
+      return false;
+    }else if(idade.value < 0 || idade.value > 120){
+      alert("Preencha o campo de idade corretamente");
+      return false;
+    }
+    axios.get("php/php.php?a=c",{
+      params:{
+        name:nome.value,
+        year:idade.value
+      }
     })
-    document.getElementById('r').addEventListener('click',function(){
-      h1.innerHTML="Read";
-      forms(h1);
+    .then(function(){
+      window.location.reload(1);
+    }).catch(function(){
+        console.log("erro");
     })
-    document.getElementById('u').addEventListener('click',function(){
-      h1.innerHTML="Update";
-      forms(h1);
-    })
-    document.getElementById('d').addEventListener('click',function(){
-      h1.innerHTML="Delete";
-      forms(h1);
-    })
-  }
-  function forms(h1){
-    h1=h1.innerHTML;
-    h1 == "Criar" ? document.getElementById("form_cadastro").style.display="block" : document.getElementById("form_cadastro").style.display="none";
-    h1 == "Read" ? document.getElementById("read").style.display="block": document.getElementById("read").style.display="none";
-    h1 == "Update" ? document.getElementById("modi").style.display="block" : document.getElementById("modi").style.display="none";
-    h1 == "Delete" ? document.getElementById("delete").style.display="block" : document.getElementById("delete").style.display="none";
-  }
-  createListeners();
-}
-function validar_cadastro(){
-  let nome = document.getElementById('nome');
-  let telefone = document.getElementById('telefone');
-  if(nome.value == "" || nome.value.length < 2){
-    alert("Preencha o campo de nome corretamente");
     return false;
-  }else if(telefone.value == "" || telefone.value.length < 2 || telefone.value.length > 14){
-    alert("Preencha o campo de telefone corretamente");
+  }else if(type=="u" && id > 0){
+    if(nome.value == "" || nome.value.length < 2){
+      alert("Preencha o campo de nome corretamente");
+      return false;
+    }else if(idade.value < 0 || idade.value > 120){
+      alert("Preencha o campo de idade corretamente");
+      return false;
+    }
+    axios.get("php/php.php?a=u",{
+      params:{
+        name:nome.value,
+        year:idade.value,
+        id:id
+      }
+    })
+    .then(function(){
+      window.location.reload(1);
+    }).catch(function(){
+        console.log("erro");
+    })
     return false;
   }
 }
-function redirecionar_delete(id){
-  window.location.href="php/php.php?a=d&id="+id;
-}
-function redirecionar_modi(id){
-  let inputs_nome = document.getElementById('nome_modi_'+id);
-  let fone=document.getElementById('fone_modi_'+id);
-  let save=document.getElementById(id);
-  if(inputs_nome.style.pointerEvents=="none" && fone.style.pointerEvents=="none" ||inputs_nome.style.pointerEvents=="" && fone.style.pointerEvents==""){
-    inputs_nome.style.pointerEvents="all";
-    fone.style.pointerEvents="all";
-    inputs_nome.style.borderBottom="2px cornflowerblue solid";
-    fone.style.borderBottom="2px cornflowerblue solid";
-    save.style.display="block";
-  }else{
-    inputs_nome.style.pointerEvents="none";
-    fone.style.pointerEvents="none";
-    inputs_nome.style.borderBottom="0";
-    fone.style.borderBottom="0";
-    save.style.display="none";
+const xhr= new XMLHttpRequest();
+const tds={
+  IserirTD_nome(tr,texto){
+    let td=document.createElement("td");
+    let txt=document.createTextNode(texto);
+    td.appendChild(txt);
+    tr.appendChild(td);
+    return tr;
+  },
+  IserirTD_idade(tr,texto){
+    let td=document.createElement("td");
+    let txt=document.createTextNode(texto);
+    td.appendChild(txt);
+    tr.appendChild(td);
+    return tr;
+  },
+  IserirTD_btn(tr,id){
+    let td_edit=document.createElement("td");
+    let td_ex=document.createElement("td");
+    let btn_edit=document.createElement("button");
+    let btn_ex=document.createElement("button");
+    let txt_edit=document.createTextNode("Editar");
+    let txt_ex=document.createTextNode("Excluir");
+    btn_edit.setAttribute("id","edit_"+id);
+    btn_edit.setAttribute("class","edit");
+    btn_ex.setAttribute("id","ex_"+id);
+    btn_ex.setAttribute("class","ex");
+    btn_edit.appendChild(txt_edit);
+    btn_ex.appendChild(txt_ex);
+    btn_edit.setAttribute("onclick","editar("+id+")");
+    btn_ex.setAttribute("onclick","excluir("+id+")");
+    td_edit.appendChild(btn_edit);
+    td_ex.appendChild(btn_ex);
+    tr.appendChild(td_edit);
+    tr.appendChild(td_ex);
+    return tr;
   }
 }
-function fechar_form(){
-  let box=document.getElementById('view');
-  box.style.display="none";
+function mostrar_dados(){
+  xhr.onreadystatechange = function(){
+    if(this.readyState==4){
+      if(this.status==200){
+        let tb=document.getElementById('tb');
+        var array=JSON.parse(xhr.responseText);
+        for (let i = 0; i < array.length; i++) {
+          tr=document.createElement("tr");
+          tds.IserirTD_nome(tr,array[i]['nome']);
+          tds.IserirTD_idade(tr,array[i]['idade']);
+          tds.IserirTD_btn(tr,array[i]['id']);
+          tb.appendChild(tr);
+        }
+      }else if(xhr.status==400){
+        console.log("file or resource not found");
+      } 
+    };
+  }
+  xhr.open('get','php/php.php?a=ver_resultados',true);
+  xhr.send();
 }
-function save(id){
-  let id_usu=document.getElementById("id_"+id);
-  let inputs_nome = document.getElementById('nome_modi_'+id);
-  let fone=document.getElementById('fone_modi_'+id);
-  if(inputs_nome.value == "" || inputs_nome.value.length < 2){
-    alert("Preencha o campo de nome corretamente");
-  }else if(fone.value == "" || fone.value.length < 9 || fone.value.length >= 15){
-    alert("Preencha o campo de telefone corretamente");
-  }else{
-    window.location.href="php/php.php?a=u&id="+id_usu.value+"&nome="+inputs_nome.value+"&fone="+fone.value;
+
+function editar(id){
+  xhr.onreadystatechange=function(){
+    if(this.readyState==4){
+      if(this.status==200){
+        let nome=document.getElementById('name');
+        let year=document.getElementById('year');
+        let h1=document.getElementById('title');
+        let submit=document.getElementById('submit');
+        let array=JSON.parse(this.responseText);
+        nome.value=array[0]['nome'];
+        year.value=array[0]['idade'];
+        h1.innerHTML="Editar usuario";
+        submit.value="Editar";
+        mudarActionForm(array[0]['id'],"update");
+      }else if(xhr.status==400){
+        console.log("file or resource not found");
+      }
+    };
+  }
+  xhr.open('get','php/php.php?a=verID&id='+id,true);
+  xhr.send();
+}
+function excluir(id){
+  axios.get("php/php.php?a=excluir",{
+    params:{
+      id:id
+    }
+  })
+  .then(function(){
+    window.location.reload(1);
+  }).catch(function(){
+      console.log("erro");
+  })
+}
+
+function mudarActionForm(id,tipo){
+  if(tipo=="update"){
+    document.getElementById('form').setAttribute("onsubmit","return validar('u',"+id+")");
   }
 }
-function formatar_fone(id){
-  let fone=document.getElementById(id);
-  if(fone.value.length == 2){
-    fone.value=fone.value+" ";
-  }
-  if(fone.value.length == 7){
-    fone.value=fone.value+"-";
-  }
-}
-crud();
+mostrar_dados();

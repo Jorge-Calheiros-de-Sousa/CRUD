@@ -1,119 +1,123 @@
+*{
+  margin: 0;
+  padding: 0;
+}
 body{
   font-family: Arial, Helvetica, sans-serif;
-  color: rgb(54, 54, 54);
-  background-color: #EEEE;
+  font-size: 14px;
 }
-div.conteudo{
+header{
+  background-color: #009879;
+  color: white;
+  display: flex;
+  justify-content: space-around;
   align-items: center;
+  height: 150px;
+  margin-bottom: 50px;
 }
-.conteudo div{
+.conteudo{
+  width: 100%;
+  height: fit-content;
+  background-color: #EEEEEE;
+}
+.conteudo div.box{
+  display: inline-block;
+  vertical-align: top;
+  width: 45%;
+  padding: 10px;
+  margin-left: 2%;
+}
+/*FORMULARIO*/
+.conteudo form{
+  background-color: white;
   width: 50%;
   margin-left: 25%;
+  padding: 10px;
+  border-radius: 5px;
 }
-.conteudo .cabecalho{
-  height: 150px;
-}
-.conteudo .crud h1{
+.conteudo form h1{
+  text-align: center;
+  margin-bottom: 20px;
   font-size: 25px;
 }
-.conteudo button{
-  padding: 10px;
-  background-color: cornflowerblue;
-  margin: 5px;
-  border: 0;
-  color: white;
-  font-weight: bold;
-  transition: background 100ms linear;
-  cursor: pointer;
-}
-.conteudo button:hover{
-  background-color: rgb(50, 112, 228);
-}
-.conteudo .view{
-  height: 500px;
-  border: 1px solid grey;
-  background-color: white;
+.conteudo form div{
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 50px;
   height: fit-content;
 }
-.conteudo .view h1{
-  margin-left: 10%;
-}
-.conteudo .view form input{
+.conteudo form div input{
   padding: 10px;
-  outline: none;
-  transition: border 100ms linear;
-  width: 94%;
+  background-color: #E8E8E8;
+  border: 0;
+  width: 90%;
+  margin-left: 2%;
 }
-.conteudo .view form input:focus{
-  border: 2px solid cornflowerblue;
+.conteudo form div label{
+  margin-left: 2%;
 }
-.conteudo .view form{
-  width: 50%;
-  margin-left: 25%;
-  margin-top: 10%;
-  margin-bottom: 10%;
-}
-section{
- display: flex;
- justify-content: space-around;
- align-items: center;
-}
-.formulario{
-  margin: 20px !important;
-  width: 40% !important;
-}
-.display{
-  display: none;
-}
-.conteudo .view form button{
-  width: 100%;
-  margin: 0;
-  margin-top: 10%;
-  background-color: #3a3a8d;
-}
-.conteudo .view form button:hover{
-  background-color: rgb(31, 31, 87);
-}
-.conteudo .view div.table_read{
-  margin-left: 10%;
-  width: 80%;
-}
-table{
-  border-collapse: collapse;
-}
-.conteudo .view div.table_read table th,tr,td{
-  width: 500px;
-  text-align: left;
-  padding: 5px;
-}
-.conteudo .view div.table_read table th{
-  border-bottom: 1px solid grey;
-}
-button.delete{
-  background-color: rgb(238, 76, 76);
+.conteudo form div input.submit{
+  border: 0;
+  background-color: cornflowerblue;
+  color: white;
+  width: 95%;
+  margin-left: 2%;
+  cursor: pointer;
   transition: background 100ms linear;
 }
-button.delete:hover{
-  background-color: rgb(134, 13, 13);
+.conteudo form div input.submit:hover{
+  background-color: rgb(18, 87, 214);
 }
-.absolute{
-  position: absolute;
-  z-index: 2;
-  top: 290px;
-  left: 0px;
-  display: none;
+/*TABELA*/
+.styled-table {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  font-family: sans-serif;
+  width: 100%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
-.display_flex{
-  display:  flex;
-  justify-content: space-between;
-  align-items: center;
+.styled-table thead tr {
+  background-color: #009879;
+  color: #ffffff;
+  text-align: left;
 }
-table#table_modi input{
-  width: 80px;
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+}
+.styled-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+.styled-table tbody tr:last-of-type {
+  border-bottom: 2px solid #009879;
+}
+.styled-table button{
+  width: 90%;
+  margin-left: 5%;
   border: 0;
-  font-size: 16px;
-  outline: none;
+  color: white;
+  cursor: pointer;
 }
-.read{
-  pointer-events: none;
+.styled-table button.ex{
+  background-color: rgb(231, 66, 66);
+}
+.styled-table button.ex:hover{
+  background-color: rgb(224, 101, 101);
+}
+.styled-table button.ex:active{
+  background-color: rgb(197, 29, 29);
+}
+.styled-table button.edit{
+  background-color: #009879;
+}
+.styled-table button.edit:hover{
+  background-color: #06b390;
+}
+.styled-table button.edit:active{
+  background-color: #025343;
+}
+
+.display{
+  display: none;
 }

@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CRUD</title>
-  <link rel="stylesheet" href="mvc/View/formatting/css.css">
-  <script src="mvc/View/JavaScript/main.js"></script>
-  <script src="mvc/View/JavaScript/api.js"></script>
+  <link rel="stylesheet" href="mvc/View/css/style.css">
+  <script src="mvc/View/js/elements.js"></script>
+  <script src="mvc/View/js/routes.js"></script>
+  <script src="mvc/View/js/api.js"></script>
+  <script src="mvc/View/js/form.js"></script>
+  <script src="mvc/View/js/services.js"></script>
 </head>
+
 <body>
   <header>
     <h1>Sistem de CRUD simples</h1>
@@ -20,10 +25,12 @@
         <hr>
         <br>
         <div>
-          <label for="name">Nome:</label><br><input type="text" name="name" id="name" autocomplete="off" placeholder="Digite seu nome" maxlength="30"><br>
+          <label for="name">Nome:</label><br><input type="text" name="name" id="name" autocomplete="off"
+            placeholder="Digite seu nome" maxlength="30"><br>
         </div>
         <div>
-          <label for="year">Idade:</label><br><input type="number" name="year" id="year" autocomplete="off" placeholder="Digite sua idade" min="1" max="120">
+          <label for="year">Idade:</label><br><input type="number" name="year" id="year" autocomplete="off"
+            placeholder="Digite sua idade" min="1" max="120">
         </div>
         <div>
           <input type="submit" value="Enviar" class="submit" id='submit'>
@@ -33,24 +40,25 @@
     <div class="box">
       <table class="styled-table">
         <thead>
-            <tr>
-                <th>Nome</th>
-                <th>Idade</th>
-                <th>Editar</th>
-                <th>Excluir</th>
-            </tr>
+          <tr>
+            <th>Nome</th>
+            <th>Idade</th>
+            <th>Editar</th>
+            <th>Excluir</th>
+          </tr>
         </thead>
         <tbody id='tb'>
-            <tr>
+          <tr>
 
-            </tr>
-            <tr>
+          </tr>
+          <tr>
 
-            </tr>
+          </tr>
         </tbody>
-    </table>
+      </table>
     </div>
   </div>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </body>
+
 </html>

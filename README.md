@@ -30,7 +30,7 @@ Uma CRUD simples feito a mão usando as seguintes tecnologias
     |---------|---------|
     |DB_HOST    |localhost       |
     |DB_DATABASE    |dbusuarios       |
-    |DB_USERNAME     |usuarios         |
+    |DB_USERNAME     |root         |
     |DB_PASSWORD    |''         |
 - E agora é só usar a aplicação
 

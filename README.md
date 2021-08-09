@@ -22,7 +22,7 @@ Uma CRUD simples feito a mão usando as seguintes tecnologias
 - No htdocs clone o repositorio
 - Execute o comando `composer update` e aguarde o fim da instalação
 - Mude o nome do arquivo `env.example` para `.env`
-- Mude o nome do arquivo `routes.example.js` para routes.js
+- Mude o nome do arquivo `routes.example.js` para `routes.js`
 - Crie o banco de dados MySQL de acordo com o arquivo `dbusuarios.sql`
 - Preencha as variaveis do arquivo `.env` de acordo com as intruções abaixo:
    
@@ -59,7 +59,7 @@ Uma CRUD simples feito a mão usando as seguintes tecnologias
     |DB_DATABASE    |dbusuarios         |
     |DB_USERNAME     |root         |
     |DB_PASSWORD     |123         |
-- Crie o banco de dados acessando o phpmyadmin por localhost:8000 e insira as informações `Ultilizador: root` e `Senha: 123`
+- Crie o banco de dados acessando o phpmyadmin por [http://localhost:8000](http://localhost:8000) e insira as informações `Ultilizador: root` e `Senha: 123`
 - Em dbusuarios crie uma tabela chamada `tbusuarios` com 3 colunas e depois insira as informações abaixo:
 
 

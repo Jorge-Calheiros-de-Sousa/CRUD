@@ -48,7 +48,7 @@ Uma CRUD simples feito a mão usando as seguintes tecnologias
 - Clone o repositório
 - Execute o comando `composer update`
 - Mude o nome do arquivo `env.example` para `.env`
-- Mude o nome do arquivo `routes.example.js` para routes.js
+- Mude o nome do arquivo `routes.example.js` para `routes.js`
 - Execute o comando `docker-compose up -d`
 - Preencha as variaveis do arquivo `.env` de acordo com as intruções abaixo:
 

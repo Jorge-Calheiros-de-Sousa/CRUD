@@ -3,7 +3,7 @@
 
 # Sistema de CRUD
 
-Uma CRUD simples feito a mão usando as seguintes tecnologias
+Um CRUD simples feito a mão usando as seguintes tecnologias
 
 - Xampp
 - Docker
@@ -21,8 +21,8 @@ Uma CRUD simples feito a mão usando as seguintes tecnologias
 - Dentro do xampp procure a pasta htdocs
 - No htdocs clone o repositorio
 - Execute o comando `composer update` e aguarde o fim da instalação
-- Mude o nome do arquivo `env.example` para `.env`
-- Mude o nome do arquivo `routes.example.js` para `routes.js`
+- Copiar o arquivo `env.example` e mudar o nome para `.env`
+- Copiar o arquivo  `routes.example.js` e mudar o nome para `routes.js`
 - Crie o banco de dados MySQL de acordo com o arquivo `dbusuarios.sql`
 - Preencha as variaveis do arquivo `.env` de acordo com as intruções abaixo:
    

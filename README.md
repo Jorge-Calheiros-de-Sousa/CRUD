@@ -84,4 +84,12 @@ Um CRUD simples feito a mão usando as seguintes tecnologias
 
 Apos inicializar o docker basta acessar a url [http://localhost:8001/](http://localhost:8001/) para acessar a aplicação CRUD.
 
+## Comandos do docker
+
+|Comando |Descrição |
+|---------|---------|
+|docker-compose up -d    |Baixa o container ps: apenas executar uma vez         |
+|docker-compose start     | executa o container        |
+|docker-compose stop     | para o container        |
+|docker ps    |mostra todos os containers executados no momento         |
 

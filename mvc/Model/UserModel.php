@@ -8,6 +8,7 @@ class UserModel extends BaseModel
   private string $name;
   private int $yearOld;
 
+
   public function getId(): int
   {
     return $this->id;
@@ -49,7 +50,7 @@ class UserModel extends BaseModel
   {
     $pdo = $this->returnConnection();
 
-    $insert = $pdo->prepare("insert into TbUsuarios (name_user,yearOld_user) values(:name,:yearOld)");
+    $insert = $pdo->prepare("insert into tbusuarios (name_user,yearOld_user) values(:name,:yearOld)");
     $insert->bindParam(':name', $this->name);
     $insert->bindParam(':yearOld', $this->yearOld);
 
@@ -64,7 +65,7 @@ class UserModel extends BaseModel
   {
     $pdo = $this->returnConnection();
 
-    $up = $pdo->prepare("UPDATE TbUsuarios set name_user = :name_user, yearOld_user= :yearOld  where id=:id");
+    $up = $pdo->prepare("UPDATE tbusuarios set name_user = :name_user, yearOld_user= :yearOld  where id=:id");
     $up->bindParam(":name_user", $this->name);
     $up->bindParam(":yearOld", $this->yearOld);
     $up->bindParam(":id", $this->id);
@@ -80,7 +81,7 @@ class UserModel extends BaseModel
   {
     $pdo = $this->returnConnection();
 
-    $del = $pdo->prepare("delete from TbUsuarios where id = :id");
+    $del = $pdo->prepare("delete from tbusuarios where id = :id");
     $del->bindValue(":id", $this->id);
 
     return ($del->execute() ? true : false);
@@ -95,7 +96,7 @@ class UserModel extends BaseModel
 
     $where = $this->id ? " where id=" . $this->id : "";
 
-    $sql = $pdo->prepare("select * from TbUsuarios" . $where);
+    $sql = $pdo->prepare("select * from tbusuarios" . $where);
 
     return ($sql->execute() ? $sql : false);
   }
